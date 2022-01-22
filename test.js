@@ -1,15 +1,8 @@
-let hour = prompt("hour");
-let min = prompt("min");
+const me = {
+  name: 'aggie',
+  age: 26
+};
 
-if(min < 45){
-  min = 60 - (-(min - 45));
-  if(hour == 0){
-    hour = 23;
-  }else{
-    hour = hour - 1;
-  }
-}else{
-  min -= 45;
+for(i in me){
+  console.log(i);
 }
-
-console.log(hour, min);
