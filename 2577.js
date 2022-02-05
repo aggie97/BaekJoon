@@ -21,6 +21,8 @@ for(let i of countedResult){
 
 // ------------------------------------------------------------------------------
 
+//
+
 // const nums = require('fs').readFileSync('/dev/stdin').toString().split('\n');
 
 // const result = String(nums[0] * nums[1] * nums[2]); 
