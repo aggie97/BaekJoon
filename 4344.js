@@ -10,6 +10,5 @@ for(let i = 1; i <= testCase; i++){
   }
   let avg = sum / studentNum;
   let smart = input[i].split(' ').filter((score) => Number(score) > avg);
-  console.log(smart);
   console.log((smart.length / studentNum * 100).toFixed(3)+"%");
 }
