@@ -26,3 +26,5 @@ for (let i = 1; i <= caseCount; i++) {
 }
 
 console.log(count);
+
+// 다시 풀어보자...
