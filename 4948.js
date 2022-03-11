@@ -1,4 +1,8 @@
-const input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
+const input = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("\n");
 
 const getPrimeNumCount = (num) => {
   let arr = [];
@@ -16,13 +20,15 @@ const getPrimeNumCount = (num) => {
   }
 
   if (start < 2) arr.splice(0, 2, false);
-  else arr.splice(0, start, false);
+  else arr.splice(0, start);
+
+  arr.shift();
 
   const result = arr.filter((v) => v !== false).length;
   return result;
 };
 
 for (const num of input) {
-  if (num === 0) break;
-  console.log(getPrimeNumCount(num));
+  if (Number(num) === 0) break;
+  else console.log(getPrimeNumCount(num));
 }
