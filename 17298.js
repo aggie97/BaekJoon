@@ -26,4 +26,7 @@ console.log(answer.join(" ").trim());
   stack의 마지막 요소를 인덱스로 사용한 answer 요소에 nums[i]를 대입한다.
 
   그 후 while문을 나와서 stack에 다음 인덱스(i)를 넣는다.
+
+  stack의 길이 조건이 충족되어도 두 번째 조건이 충족되지 않는다면 stack에 i를 계속 넣고
+  다음 루프로 넘어간다.
 */
