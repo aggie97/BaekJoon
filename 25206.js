@@ -39,7 +39,8 @@ const input = fs
   .toString()
   .trim()
   .split("\n")
-  .filter((val) => val.at(-1) !== "P");
+  .filter((val) => val.at(-1) !== "P")
+  .map((val) => val.split(" "));
 
 const scoreBoard = {
   "A+": 4.5,
@@ -54,20 +55,12 @@ const scoreBoard = {
 };
 
 let totalSubjectRating = 0;
-let answer = 0;
+let sum = 0;
 
 for (let i = 0; i < input.length; i++) {
-  const subjectRating = +input[i].split(" ")[1];
-  totalSubjectRating += subjectRating;
+  const [_, subjectRating, grade] = input[i];
+  sum += Number(subjectRating) * scoreBoard[grade];
+  totalSubjectRating += Number(subjectRating);
 }
 
-function gradeCalculator(subjectRating, myGrade, totalSubjectRating) {
-  return (subjectRating * scoreBoard[myGrade]) / totalSubjectRating;
-}
-
-for (let i = 0; i < input.length; i++) {
-  const [_, subjectRating, grade] = input[i].split(" ");
-  answer += gradeCalculator(+subjectRating, grade, totalSubjectRating);
-}
-
-console.log(answer.toFixed(6));
+console.log(sum / totalSubjectRating);
