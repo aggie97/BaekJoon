@@ -4,8 +4,8 @@
   MenOfPassion 알고리즘은 다음과 같다.
   MenOfPassion(A[], n) {
     sum <- 0;
-    for i <- 1 to n
-      for j <- 1 to n
+    for i <- 1 to n - 1
+      for j <- i + 1 to n
         sum <- sum + A[i] * A[j]; # 코드1
     return sum;
   }
@@ -23,10 +23,14 @@
   단, 다항식으로 나타낼 수 없거나 최고차항의 차수가 3보다 크면 4를 출력한다.
 */
 
-// 1부터 입력값 n까지 반복하는 for문 2개 => n^2 => 수행 횟수는 n의 제곱, 최고차항은 2
+// n-1번 반복하는 for문 하나
+// n-1번 반복하는 for문의 i + 1부터 n까지 반복하는 for문 하나
+
+// 수행횟수 (n-1) * (n/2) => (n^2-n)/2
+// 최고차항 2
 
 const fs = require("fs");
 
 const input = +fs.readFileSync("dev/stdin").toString().trim();
 
-console.log(input ** 2 + "\n2");
+console.log((input ** 2 - input) / 2 + "\n2");
