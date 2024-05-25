@@ -24,26 +24,9 @@ const fs = require("fs");
 
 const input = fs.readFileSync("dev/stdin").toString().split("\n");
 
-const myCards = input[1]
-  .split(" ")
-  .map(Number)
-  .sort((a, b) => a - b);
+const myCards = new Set(input[1].split(" ").map(Number));
 const givenCards = input[3].split(" ").map(Number);
 
-function binarySearch(sortedArr, val) {
-  let start = 0;
-  let end = sortedArr.length - 1;
-  let center = Math.floor(end / 2);
-
-  while (sortedArr[center] !== val && start <= end) {
-    if (sortedArr[center] > val) end = center - 1;
-    else start = center + 1;
-
-    center = Math.floor((start + end) / 2);
-  }
-  return sortedArr[center] === val ? 1 : 0;
-}
-
-const answer = givenCards.map((givenNum) => binarySearch(myCards, givenNum));
+const answer = givenCards.map((givenNum) => (myCards.has(givenNum) ? 1 : 0));
 
 console.log(answer.join(" "));
