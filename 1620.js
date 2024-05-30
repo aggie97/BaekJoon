@@ -26,18 +26,22 @@ const fs = require("fs");
 const input = fs.readFileSync("dev/stdin").toString().split("\n");
 
 const [N, M] = input[0].split(" ").map(Number);
-
 input.shift();
-
+const encyclopediaArr = input.slice(0, N);
 const encyclopediaMap = new Map();
 
 for (let i = 0; i < N; i++) {
   encyclopediaMap.set(input[i], `${i + 1}`);
-  encyclopediaMap.set(`${i + 1}`, input[i]);
 }
 
 const problem = input.slice(N);
 
-for (let i = 0; i < M; i++) {
-  console.log(encyclopediaMap.get(problem[i]));
-}
+const answer = problem
+  .map((el) =>
+    Number.isNaN(Number(el))
+      ? encyclopediaMap.get(el)
+      : encyclopediaArr[Number(el) - 1]
+  )
+  .join("\n");
+
+console.log(answer);
