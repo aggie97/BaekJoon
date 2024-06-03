@@ -18,18 +18,14 @@
 
 const fs = require("fs");
 
-const input = fs.readFileSync("dev/stdin").toString().trim().split("");
+const input = fs.readFileSync("dev/stdin").toString().trim();
+const N = input.length;
+const set = new Set();
 
-const result = input.reduce((acc, cur, idx, arr) => {
-  let str = cur;
-  acc.push(str);
-  let count = 1;
-  while (idx < arr.length - 1 && arr[idx + count] !== undefined) {
-    str += arr[idx + count];
-    acc.push(str);
-    count++;
+for (let i = 0; i < N; i++) {
+  for (let j = i; j < N; j++) {
+    set.add(input.slice(i, j + 1));
   }
-  return acc;
-}, []);
+}
 
-console.log([...new Set(result)].length);
+console.log(set.size);
