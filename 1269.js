@@ -27,14 +27,11 @@ const [_count, A, B] = fs
   .split("\n")
   .map((el) => el.split(" "));
 
-const A_Set = new Set(A);
-const B_Set = new Set(B);
-const union = [...new Set([...A, ...B])];
+const arr = [...A, ...B];
+const union = [...new Set(arr)];
+const intersectionLength = arr.length - union.length;
 
-const answer = union.reduce((acc, cur) => {
-  acc += A_Set.has(cur) && B_Set.has(cur) ? 0 : 1;
-  return acc;
-}, 0);
+const answer = A.length - intersectionLength + (B.length - intersectionLength);
 
 console.log(answer);
 
